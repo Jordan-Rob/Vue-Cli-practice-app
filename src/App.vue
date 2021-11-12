@@ -5,7 +5,7 @@
   <button @click="toggleModalTwo">Newsletter</button>
   <!--<input type="text" ref="name">-->
   <!--<button @click="handleClick">Click me</button>-->
-  <div v-if="showModal" >
+  <teleport to=".modals" v-if="showModal" >
     <modal :header="header" :text="text" theme="sale" @close='toggleModal'>
       <template v-slot:links>
         <a href="#">Sign Up</a>
@@ -14,8 +14,8 @@
       <h1>Ninja Giveaway</h1>
       <p>Grab your ninja swag at half price</p>
     </modal>
-  </div>
-  <div v-if="showModalTwo">
+  </teleport>
+  <teleport to='.modals' v-if="showModalTwo">
     <modal @close="toggleModalTwo">
       <h1>Subscribe to our Newsletter</h1>
       <p>We promise we won't spam your inbox</p>
@@ -23,7 +23,7 @@
         <a href="#">Subscribe</a>
       </template>
     </modal>
-  </div>
+  </teleport>
   
 
 </template>
@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style>
-#app {
+#app, .modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
